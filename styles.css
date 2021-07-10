@@ -1,0 +1,40 @@
+/* h1 {
+  font-size: medium;
+  margin-left: 35px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+#coment {
+  margin-right: 100px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-top: 0px;
+}
+
+span {
+  margin-left: 20px;
+}
+
+.deleteClassName {
+  float: right;
+  margin-right: 10px;
+}
+
+.working {
+  float: right;
+  margin-right: 10px;
+} */
+
+ul {
+  list-style: none;
+}
+

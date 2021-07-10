@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8">
+ <title>Javascript subject</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <form id="form">
+    <label><input type="radio" name="status" value="all" onchange="showTodos()" checked>すべて</label>
+    <label><input type="radio" name="status" value="working" onchange="showWorking()">作業中</label>
+    <label><input type="radio" name="status" value="working finish" onchange="showFinish()">完了</label>
+  </form>
+
+<div id="app">
+  <table>
+  <tr>
+    <th>ID</th>
+    <th>コメント</th>
+    <th>状態</th>
+  <!-- </tr>
+  <tr></tr>
+    <th v-for="todo in todos">{{ todo.task }}</th>
+    <td v-for="todo in todos">{{ todo.time }}</td>
+  </tr> -->
+  </table>
+  
+  <ul>
+    <li v-for="(todo, index) in todos">{{ todo.task }}
+      <span>{{ todo.time }}</span>
+      <form  @submit.prevent="timerStart(index)">
+        <span><input type="submit" value="working"></span>
+      </form>
+      <form>
+        <span><input type="submit" value="delete"></span>
+      </form>
+    </li>
+  </ul>
+  
+  <form @submit.prevent="addItem">
+    <input type="text" v-model="newItem">
+    <select id="time" v-model="newTime">
+      <option disabled value="">選択してください</option>
+      <option value="300000">5分</option>
+      <option value="600000">10分</option>
+      <option value="1200000">20分</option>
+      <option value="1800000">30分</option>
+    </select>
+    <input type="submit" value="Add">
+  </form>
+  
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="main.js">   
+  </script>
+ 
+</body>
+  
+</html>
