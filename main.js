@@ -6,33 +6,32 @@ var vm = new Vue({
     newItem: '',
     newTime: '',
     todos: [],
-    count: 0,
-    timerObj: null,
+    timerObj: [],
   },
   methods: {
     addItem: function() {
       let inputTodo = {};
-      inputTodo.task = this.newItem
-      inputTodo.time = this.newTime
+      inputTodo.task = this.newItem;
+      inputTodo.time = this.newTime;
+      inputTodo.status = 'working';
+      inputTodo.func = null;
       this.todos.push(inputTodo);
-      console.log(this.todos)
       this.newItem = '';
       this.newTime = '';
       inputTodo = {};
     },
 
     timerStart: function(index) {
-      this.count++
-      console.log(index)
-      if(this.count%2 === 1) {
-        let self = this;
-        this.timerObj = setInterval(function() {
-          this.todos[index].time -= 1000;
-          console.log('現在実行中')
-        }.bind(self),1000)
+      let self = this;
+      const todosData = this.todos[index];
+      if(todosData.status === 'working') {
+        todosData.func = setInterval(function() {
+          todosData.time -= 1000;
+        }.bind(self),1000);
+        todosData.status = 'stop';
       } else {
-        clearInterval(this.timerObj);
-        console.log('現在休止中')
+        clearInterval(todosData.func);
+        todosData.status = 'working';
       }
     }  
  }
