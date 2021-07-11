@@ -32,7 +32,7 @@
       <form  @submit.prevent="timerStart(index)">
         <span><input type="submit" value="working"></span>
       </form>
-      <form>
+      <form @submit.prevent="deleteTodo(index)">
         <span><input type="submit" value="delete"></span>
       </form>
     </li>

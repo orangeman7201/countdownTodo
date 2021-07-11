@@ -6,7 +6,6 @@ var vm = new Vue({
     newItem: '',
     newTime: '',
     todos: [],
-    timerObj: [],
   },
   methods: {
     addItem: function() {
@@ -33,7 +32,13 @@ var vm = new Vue({
         clearInterval(todosData.func);
         todosData.status = 'working';
       }
-    }  
+    },
+    
+    deleteTodo: function(index) {
+      if(confirm('Todoを削除しますか？')) {
+      this.todos.splice(index,1)
+      }
+    }
  }
 })
 
